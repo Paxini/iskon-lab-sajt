@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f3ef;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a2744;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e86f3a;
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Satoshi', sans-serif;
+  background-color: #f5f3ef;
+  color: #1a2744;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor on desktop */
+@media (min-width: 768px) {
+  a, button, [role="button"] {
+    cursor: none;
+  }
+}
+
+/* Show default cursor on mobile */
+@media (max-width: 767px) {
+  body {
+    cursor: auto;
+  }
+  a, button, [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Font classes */
+.font-display {
+  font-family: 'Clash Display', sans-serif;
+}
+
+.font-body {
+  font-family: 'Satoshi', sans-serif;
+}
+
+/* Selection color */
+::selection {
+  background-color: #e86f3a;
+  color: #f5f3ef;
+}
+
+/* Smooth scroll with Lenis */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
