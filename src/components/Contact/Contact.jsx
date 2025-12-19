@@ -16,6 +16,7 @@ function Contact() {
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -24,18 +25,40 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError(false)
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Reset after showing success
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: '', email: '', company: '', message: '' })
-    }, 3000)
+    try {
+      const response = await fetch('/api/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.message,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setIsSubmitted(true)
+        // Reset after showing success
+        setTimeout(() => {
+          setIsSubmitted(false)
+          setFormData({ name: '', email: '', company: '', message: '' })
+        }, 3000)
+      } else {
+        setSubmitError(true)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitError(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -115,7 +138,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="text-navy/50 text-sm font-body">Email</p>
-                  <p className="text-navy font-display font-medium">hello@iskonlab.rs</p>
+                  <p className="text-navy font-display font-medium">hello@iskonlab.com</p>
                 </div>
               </motion.div>
 
@@ -130,7 +153,7 @@ function Contact() {
                 </div>
                 <div>
                   <p className="text-navy/50 text-sm font-body">Telefon</p>
-                  <p className="text-navy font-display font-medium">+381 11 123 4567</p>
+                  <p className="text-navy font-display font-medium">+381 65 231 8611</p>
                 </div>
               </motion.div>
 
@@ -161,6 +184,16 @@ function Contact() {
               onSubmit={handleSubmit}
               className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl border border-cream-dark"
             >
+              {submitError && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 font-body text-sm"
+                >
+                  Došlo je do greške. Molimo pokušajte ponovo ili nas kontaktirajte direktno na hello@iskonlab.com
+                </motion.div>
+              )}
+
               {!isSubmitted ? (
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

@@ -99,8 +99,8 @@ function Footer() {
           <div className="space-y-4">
             <h4 className="font-display font-semibold text-lg">Kontakt</h4>
             <div className="space-y-2 text-cream/70 font-body text-sm">
-              <p>hello@iskonlab.rs</p>
-              <p>+381 11 123 4567</p>
+              <p>hello@iskonlab.com</p>
+              <p>+381 65 231 8611</p>
             </div>
             
             <div className="flex gap-4 pt-4">
