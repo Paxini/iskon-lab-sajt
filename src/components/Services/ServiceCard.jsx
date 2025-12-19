@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import MagneticButton from '../ui/MagneticButton'
+import { useLanguage } from '../../context/LanguageContext'
 
 const cardVariants = {
   hidden: { 
@@ -23,6 +24,7 @@ const cardVariants = {
 function ServiceCard({ service, index }) {
   const ref = useRef(null)
   const [isHovered, setIsHovered] = useState(false)
+  const { t, getRoute } = useLanguage()
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -147,12 +149,12 @@ function ServiceCard({ service, index }) {
           </ul>
 
           {/* CTA Button */}
-          <Link to={`/usluge#${service.id}`}>
+          <Link to={`${getRoute('/usluge')}#${service.id}`}>
             <MagneticButton
               className="flex items-center gap-2 text-orange font-display font-semibold group/btn"
               data-cursor="Go"
             >
-              <span>Saznaj više</span>
+              <span>{t('services.learnMore')}</span>
               <motion.span
                 animate={{ x: isHovered ? 5 : 0 }}
                 transition={{ duration: 0.3 }}

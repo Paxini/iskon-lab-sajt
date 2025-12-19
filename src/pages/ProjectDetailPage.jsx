@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { getProjectById, projects } from '../data/projects'
+import { getProjectById, projects, getLocalizedProject } from '../data/projects'
+import { useLanguage } from '../context/LanguageContext'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -12,12 +13,18 @@ const pageVariants = {
 function ProjectDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { t, language, getRoute, getProjectRoute } = useLanguage()
+  
   const project = getProjectById(id)
+  const localizedProject = getLocalizedProject(project, language)
 
   // Find next and previous projects
   const currentIndex = projects.findIndex((p) => p.id === id)
   const nextProject = projects[currentIndex + 1] || projects[0]
   const prevProject = projects[currentIndex - 1] || projects[projects.length - 1]
+  
+  const localizedNextProject = getLocalizedProject(nextProject, language)
+  const localizedPrevProject = getLocalizedProject(prevProject, language)
 
   // Scroll to top on page load
   useEffect(() => {
@@ -38,16 +45,16 @@ function ProjectDetailPage() {
       >
         <div className="text-center">
           <h1 className="font-display text-4xl font-bold text-navy mb-4">
-            Projekat nije pronađen
+            {t('projectDetail.notFound.title')}
           </h1>
           <p className="text-navy/60 font-body mb-8">
-            Projekat koji tražite ne postoji ili je uklonjen.
+            {t('projectDetail.notFound.description')}
           </p>
           <Link
-            to="/projekti"
+            to={getRoute('/projekti')}
             className="inline-block px-6 py-3 bg-navy text-cream font-display font-medium rounded-full hover:bg-orange transition-colors"
           >
-            ← Nazad na projekte
+            {t('projectDetail.notFound.backButton')}
           </Link>
         </div>
       </motion.div>
@@ -67,7 +74,7 @@ function ProjectDetailPage() {
       <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
         <motion.img
           src={project.image}
-          alt={project.title}
+          alt={localizedProject.title}
           className="w-full h-full object-cover"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -83,12 +90,12 @@ function ProjectDetailPage() {
           className="absolute top-8 left-6 lg:left-12"
         >
           <Link
-            to="/projekti"
+            to={getRoute('/projekti')}
             className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm text-cream font-display font-medium rounded-full hover:bg-white/20 transition-colors"
             data-cursor="Back"
           >
             <span>←</span>
-            <span>Svi projekti</span>
+            <span>{t('projectDetail.allProjects')}</span>
           </Link>
         </motion.div>
 
@@ -109,7 +116,7 @@ function ProjectDetailPage() {
               transition={{ delay: 0.3 }}
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream"
             >
-              {project.title}
+              {localizedProject.title}
             </motion.h1>
           </div>
         </div>
@@ -127,10 +134,10 @@ function ProjectDetailPage() {
               className="lg:col-span-2"
             >
               <h2 className="font-display text-2xl font-bold text-navy mb-6">
-                O projektu
+                {t('projectDetail.aboutProject')}
               </h2>
               <p className="text-navy/70 font-body text-lg leading-relaxed whitespace-pre-line">
-                {project.fullDescription}
+                {localizedProject.fullDescription}
               </p>
             </motion.div>
 
@@ -144,15 +151,15 @@ function ProjectDetailPage() {
               {/* Client */}
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="font-display font-semibold text-navy mb-2">
-                  Klijent
+                  {t('projectDetail.client')}
                 </h3>
-                <p className="text-navy/70 font-body">{project.client}</p>
+                <p className="text-navy/70 font-body">{localizedProject.client}</p>
               </div>
 
               {/* Year */}
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="font-display font-semibold text-navy mb-2">
-                  Godina
+                  {t('projectDetail.year')}
                 </h3>
                 <p className="text-navy/70 font-body">{project.year}</p>
               </div>
@@ -160,7 +167,7 @@ function ProjectDetailPage() {
               {/* Technologies */}
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="font-display font-semibold text-navy mb-4">
-                  Tehnologije
+                  {t('projectDetail.technologies')}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
@@ -183,7 +190,7 @@ function ProjectDetailPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex justify-between items-center">
             <Link
-              to={`/projekti/${prevProject.id}`}
+              to={getProjectRoute(prevProject.id)}
               className="group flex items-center gap-4"
               data-cursor="Prev"
             >
@@ -195,33 +202,33 @@ function ProjectDetailPage() {
               </motion.span>
               <div className="hidden sm:block">
                 <span className="block text-cream/40 font-body text-sm">
-                  Prethodni projekat
+                  {t('projectDetail.prevProject')}
                 </span>
                 <span className="block text-cream font-display font-medium group-hover:text-orange transition-colors">
-                  {prevProject.title}
+                  {localizedPrevProject.title}
                 </span>
               </div>
             </Link>
 
             <Link
-              to="/projekti"
+              to={getRoute('/projekti')}
               className="px-6 py-3 border border-cream/30 text-cream font-display font-medium rounded-full hover:bg-cream hover:text-navy transition-all"
               data-cursor="All"
             >
-              Svi projekti
+              {t('projectDetail.allProjects')}
             </Link>
 
             <Link
-              to={`/projekti/${nextProject.id}`}
+              to={getProjectRoute(nextProject.id)}
               className="group flex items-center gap-4"
               data-cursor="Next"
             >
               <div className="hidden sm:block text-right">
                 <span className="block text-cream/40 font-body text-sm">
-                  Sledeći projekat
+                  {t('projectDetail.nextProject')}
                 </span>
                 <span className="block text-cream font-display font-medium group-hover:text-orange transition-colors">
-                  {nextProject.title}
+                  {localizedNextProject.title}
                 </span>
               </div>
               <motion.span

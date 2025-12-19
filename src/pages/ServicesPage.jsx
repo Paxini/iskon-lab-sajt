@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import MagneticButton from '../components/ui/MagneticButton'
+import { useLanguage } from '../context/LanguageContext'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -9,144 +10,12 @@ const pageVariants = {
   exit: { opacity: 0, y: -20 },
 }
 
-const services = [
-  {
-    id: 'web-development',
-    title: 'Razvoj sajtova',
-    subtitle: 'Od ideje do produkcije',
-    icon: '{ }',
-    color: '#1a2744',
-    description: 'Gradimo moderne, brze i skalabilne web aplikacije koje ostavljaju utisak.',
-    longDescription: `Svaki web projekat započinjemo dubokim razumevanjem vaših ciljeva i potreba 
-    korisnika. Koristimo najnovije tehnologije i najbolje prakse da bismo kreirali rešenja koja 
-    nisu samo vizuelno impresivna, već i tehnički superiorna.`,
-    capabilities: [
-      {
-        title: 'Frontend Development',
-        items: ['React / Next.js', 'Vue.js', 'Tailwind CSS', 'Framer Motion animacije'],
-      },
-      {
-        title: 'Backend Development',
-        items: ['Node.js / Express', 'PHP / Laravel', 'REST & GraphQL API', 'Database dizajn'],
-      },
-      {
-        title: 'Specijalizacije',
-        items: ['E-commerce platforme', 'CMS integracije', 'Payment gateway', 'Real-time aplikacije'],
-      },
-    ],
-    process: ['Analiza potreba', 'Development', 'Testiranje', 'Deployment'],
-  },
-  {
-    id: 'mobile-apps',
-    title: 'Aplikacije za telefone',
-    subtitle: 'U džepu vaših korisnika',
-    icon: '📱',
-    color: '#e86f3a',
-    description: 'Nativne i cross-platform aplikacije koje korisnici vole da koriste.',
-    longDescription: `Mobilne aplikacije su danas često prvi kontakt korisnika sa vašim brendom. 
-    Zato kreiramo aplikacije koje su intuitivne, brze i prijatne za korišćenje — aplikacije 
-    koje korisnici preporučuju prijateljima.`,
-    capabilities: [
-      {
-        title: 'Platforme',
-        items: ['iOS (Swift)', 'Android (Kotlin)', 'React Native', 'Flutter'],
-      },
-      {
-        title: 'Funkcionalnosti',
-        items: ['Push notifikacije', 'Offline mode', 'Biometrijska autentifikacija', 'Kupovine u aplikaciji'],
-      },
-      {
-        title: 'Integracije',
-        items: ['Social login', 'Maps & lokacija', 'Payment sistemi', 'Analitika'],
-      },
-    ],
-    process: ['Istraživanje', 'UX/UI', 'Development', 'Beta testing', 'App Store'],
-  },
-  {
-    id: 'digital-marketing',
-    title: 'Digitalni Marketing',
-    subtitle: 'Strategije koje donose rezultate',
-    icon: '📈',
-    color: '#2d5a45',
-    description: 'Data-driven marketing koji pretvara posetioce u kupce.',
-    longDescription: `Marketing bez podataka je nagađanje. Mi kombinujemo analitičko razmišljanje 
-    sa kreativnošću da bismo kreirali kampanje koje zaista funkcionišu. Svaka odluka je 
-    potkrepljena podacima, svaki rezultat je merljiv.`,
-    capabilities: [
-      {
-        title: 'SEO & Content',
-        items: ['Tehnički SEO', 'Content strategija', 'Link building', 'Local SEO'],
-      },
-      {
-        title: 'Paid Advertising',
-        items: ['Google Ads', 'Meta Ads', 'LinkedIn Ads', 'Remarketing'],
-      },
-      {
-        title: 'Analytics',
-        items: ['Google Analytics 4', 'Conversion tracking', 'A/B testiranje', 'ROI analiza'],
-      },
-    ],
-    process: ['Audit', 'Strategija', 'Implementacija', 'Optimizacija', 'Reporting'],
-  },
-  {
-    id: 'branding',
-    title: 'Brending',
-    subtitle: 'Identitet koji se pamti',
-    icon: '✨',
-    color: '#9c4d97',
-    description: 'Vizuelni identitet koji gradi poverenje i prepoznatljivost.',
-    longDescription: `Brend je više od loga — to je celokupno iskustvo koje korisnici imaju sa 
-    vašom kompanijom. Mi kreiramo koherentne vizuelne identitete koji komuniciraju vaše 
-    vrednosti i ostavljaju trajan utisak.`,
-    capabilities: [
-      {
-        title: 'Vizuelni identitet',
-        items: ['Logo dizajn', 'Paleta boja', 'Tipografija', 'Ikonografija'],
-      },
-      {
-        title: 'Brand materijali',
-        items: ['Vizit karte', 'Prezentacije', 'Social media assets', 'Print materijali'],
-      },
-      {
-        title: 'Strategija',
-        items: ['Brand positioning', 'Tone of voice', 'Brand guidelines', 'Competitor analiza'],
-      },
-    ],
-    process: ['Discovery', 'Koncepti', 'Dizajn', 'Refinement', 'Delivery'],
-  },
-]
-
-const processSteps = [
-  {
-    number: '01',
-    title: 'Razgovor',
-    description: 'Slušamo vašu viziju i definišemo ciljeve projekta.',
-  },
-  {
-    number: '02',
-    title: 'Strategija',
-    description: 'Kreiramo detaljan plan i biramo prave tehnologije.',
-  },
-  {
-    number: '03',
-    title: 'Kreacija',
-    description: 'Dizajniramo i razvijamo uz konstantnu komunikaciju.',
-  },
-  {
-    number: '04',
-    title: 'Lansiranje',
-    description: 'Testiramo, optimizujemo i puštamo u produkciju.',
-  },
-  {
-    number: '05',
-    title: 'Podrška',
-    description: 'Ostajemo uz vas i nakon završetka projekta.',
-  },
-]
+// Services and process steps are now defined inside ServicesPage component with translations
 
 function ServiceSection({ service, index, isActive, onClick }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const { t } = useLanguage()
 
   return (
     <motion.div
@@ -235,7 +104,7 @@ function ServiceSection({ service, index, isActive, onClick }) {
               {/* Process */}
               <div className="flex flex-wrap items-center gap-4">
                 <span className="text-navy/40 font-display text-sm uppercase tracking-wider">
-                  Proces:
+                  {t('servicesPage.process')}
                 </span>
                 {service.process.map((step, i) => (
                   <motion.span
@@ -269,9 +138,161 @@ function ServicesPage() {
   const isProcessInView = useInView(processRef, { once: true, margin: '-100px' })
   const location = useLocation()
   const navigate = useNavigate()
+  const { t, getRoute } = useLanguage()
+
+  // Translated services data
+  const services = [
+    {
+      id: 'web-development',
+      title: t('servicesPage.services.webDevelopment.title'),
+      subtitle: t('servicesPage.services.webDevelopment.subtitle'),
+      icon: '{ }',
+      color: '#1a2744',
+      description: t('servicesPage.services.webDevelopment.description'),
+      longDescription: t('servicesPage.services.webDevelopment.longDescription'),
+      capabilities: [
+        {
+          title: t('servicesPage.services.webDevelopment.capabilities.frontend.title'),
+          items: t('servicesPage.services.webDevelopment.capabilities.frontend.items'),
+        },
+        {
+          title: t('servicesPage.services.webDevelopment.capabilities.backend.title'),
+          items: t('servicesPage.services.webDevelopment.capabilities.backend.items'),
+        },
+        {
+          title: t('servicesPage.services.webDevelopment.capabilities.specializations.title'),
+          items: t('servicesPage.services.webDevelopment.capabilities.specializations.items'),
+        },
+      ],
+      process: t('servicesPage.services.webDevelopment.process'),
+    },
+    {
+      id: 'mobile-apps',
+      title: t('servicesPage.services.mobileApps.title'),
+      subtitle: t('servicesPage.services.mobileApps.subtitle'),
+      icon: '📱',
+      color: '#e86f3a',
+      description: t('servicesPage.services.mobileApps.description'),
+      longDescription: t('servicesPage.services.mobileApps.longDescription'),
+      capabilities: [
+        {
+          title: t('servicesPage.services.mobileApps.capabilities.platforms.title'),
+          items: t('servicesPage.services.mobileApps.capabilities.platforms.items'),
+        },
+        {
+          title: t('servicesPage.services.mobileApps.capabilities.features.title'),
+          items: t('servicesPage.services.mobileApps.capabilities.features.items'),
+        },
+        {
+          title: t('servicesPage.services.mobileApps.capabilities.integrations.title'),
+          items: t('servicesPage.services.mobileApps.capabilities.integrations.items'),
+        },
+      ],
+      process: t('servicesPage.services.mobileApps.process'),
+    },
+    {
+      id: 'digital-marketing',
+      title: t('servicesPage.services.digitalMarketing.title'),
+      subtitle: t('servicesPage.services.digitalMarketing.subtitle'),
+      icon: '📈',
+      color: '#2d5a45',
+      description: t('servicesPage.services.digitalMarketing.description'),
+      longDescription: t('servicesPage.services.digitalMarketing.longDescription'),
+      capabilities: [
+        {
+          title: t('servicesPage.services.digitalMarketing.capabilities.seo.title'),
+          items: t('servicesPage.services.digitalMarketing.capabilities.seo.items'),
+        },
+        {
+          title: t('servicesPage.services.digitalMarketing.capabilities.paid.title'),
+          items: t('servicesPage.services.digitalMarketing.capabilities.paid.items'),
+        },
+        {
+          title: t('servicesPage.services.digitalMarketing.capabilities.analytics.title'),
+          items: t('servicesPage.services.digitalMarketing.capabilities.analytics.items'),
+        },
+      ],
+      process: t('servicesPage.services.digitalMarketing.process'),
+    },
+    {
+      id: 'branding',
+      title: t('servicesPage.services.branding.title'),
+      subtitle: t('servicesPage.services.branding.subtitle'),
+      icon: '✨',
+      color: '#9c4d97',
+      description: t('servicesPage.services.branding.description'),
+      longDescription: t('servicesPage.services.branding.longDescription'),
+      capabilities: [
+        {
+          title: t('servicesPage.services.branding.capabilities.visual.title'),
+          items: t('servicesPage.services.branding.capabilities.visual.items'),
+        },
+        {
+          title: t('servicesPage.services.branding.capabilities.materials.title'),
+          items: t('servicesPage.services.branding.capabilities.materials.items'),
+        },
+        {
+          title: t('servicesPage.services.branding.capabilities.strategy.title'),
+          items: t('servicesPage.services.branding.capabilities.strategy.items'),
+        },
+      ],
+      process: t('servicesPage.services.branding.process'),
+    },
+  ]
+
+  const processSteps = [
+    {
+      number: '01',
+      title: t('servicesPage.ourProcess.steps.step1.title'),
+      description: t('servicesPage.ourProcess.steps.step1.description'),
+    },
+    {
+      number: '02',
+      title: t('servicesPage.ourProcess.steps.step2.title'),
+      description: t('servicesPage.ourProcess.steps.step2.description'),
+    },
+    {
+      number: '03',
+      title: t('servicesPage.ourProcess.steps.step3.title'),
+      description: t('servicesPage.ourProcess.steps.step3.description'),
+    },
+    {
+      number: '04',
+      title: t('servicesPage.ourProcess.steps.step4.title'),
+      description: t('servicesPage.ourProcess.steps.step4.description'),
+    },
+    {
+      number: '05',
+      title: t('servicesPage.ourProcess.steps.step5.title'),
+      description: t('servicesPage.ourProcess.steps.step5.description'),
+    },
+  ]
+
+  const whyUsItems = [
+    {
+      title: t('servicesPage.whyUs.items.understand.title'),
+      description: t('servicesPage.whyUs.items.understand.description'),
+      icon: '🎯',
+    },
+    {
+      title: t('servicesPage.whyUs.items.excellence.title'),
+      description: t('servicesPage.whyUs.items.excellence.description'),
+      icon: '⚡',
+    },
+    {
+      title: t('servicesPage.whyUs.items.transparency.title'),
+      description: t('servicesPage.whyUs.items.transparency.description'),
+      icon: '🔍',
+    },
+    {
+      title: t('servicesPage.whyUs.items.dedication.title'),
+      description: t('servicesPage.whyUs.items.dedication.description'),
+      icon: '💪',
+    },
+  ]
 
   const handleContactClick = () => {
-    navigate('/')
+    navigate(getRoute('/'))
     setTimeout(() => {
       const element = document.querySelector('#contact')
       if (element && window.lenis) {
@@ -352,18 +373,17 @@ function ServicesPage() {
             className="text-center"
           >
             <span className="inline-block px-4 py-2 bg-orange/20 text-orange font-display text-sm font-semibold rounded-full mb-8">
-              Usluge
+              {t('servicesPage.badge')}
             </span>
 
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-8">
-              Šta mi
+              {t('servicesPage.heroTitle')}
               <br />
-              <span className="text-orange">radimo</span>
+              <span className="text-orange">{t('servicesPage.heroTitleHighlight')}</span>
             </h1>
 
             <p className="text-cream/60 font-body text-xl max-w-2xl mx-auto">
-              Kombinujemo tehničku ekspertizu sa razumevanjem tržišta da bismo 
-              kreirali digitalna rešenja koja donose rezultate.
+              {t('servicesPage.heroDescription')}
             </p>
           </motion.div>
         </div>
@@ -379,10 +399,10 @@ function ServicesPage() {
             className="text-center mb-16 px-6"
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              Kliknite da saznate više
+              {t('servicesPage.clickToLearn')}
             </h2>
             <p className="text-navy/60 font-body">
-              Svaka usluga je priča za sebe
+              {t('servicesPage.eachService')}
             </p>
           </motion.div>
 
@@ -420,12 +440,12 @@ function ServicesPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6">
-              Naš <span className="text-orange">proces</span>
-            </h2>
-            <p className="text-cream/60 font-body text-lg max-w-2xl mx-auto">
-              Transparentan i efikasan pristup svakom projektu
-            </p>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6">
+            {t('servicesPage.ourProcess.title')} <span className="text-orange">{t('servicesPage.ourProcess.titleHighlight')}</span>
+          </h2>
+          <p className="text-cream/60 font-body text-lg max-w-2xl mx-auto">
+            {t('servicesPage.ourProcess.description')}
+          </p>
           </motion.div>
 
           {/* Process Steps */}
@@ -480,34 +500,13 @@ function ServicesPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6">
-              Zašto <span className="text-orange">mi?</span>
-            </h2>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6">
+            {t('servicesPage.whyUs.title')} <span className="text-orange">{t('servicesPage.whyUs.titleHighlight')}</span>
+          </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Razumemo vas',
-                description: 'Razumemo vaše potrebe i potrebe tržišta i pravimo ono što vam treba.',
-                icon: '🎯',
-              },
-              {
-                title: 'Tehnička izvrsnost',
-                description: 'Praktično iskustvo u velikim projektima garantuje kvalitet i performanse.',
-                icon: '⚡',
-              },
-              {
-                title: 'Transparentnost',
-                description: 'Znate tačno šta se dešava u svakom trenutku. Bez iznenađenja.',
-                icon: '🔍',
-              },
-              {
-                title: 'Posvećenost',
-                description: 'Vaš uspeh je naš uspeh. Radimo dok niste potpuno zadovoljni.',
-                icon: '💪',
-              },
-            ].map((item, index) => (
+            {whyUsItems.map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -539,17 +538,17 @@ function ServicesPage() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-3xl md:text-5xl font-bold text-cream mb-6">
-              Spremni da počnemo?
+              {t('servicesPage.cta.title')}
             </h2>
             <p className="text-cream/60 font-body text-lg mb-8">
-              Razgovarajmo o vašem projektu. Besplatna konsultacija, bez obaveza.
+              {t('servicesPage.cta.description')}
             </p>
             <button
               onClick={handleContactClick}
               className="inline-block px-8 py-4 bg-orange text-cream font-display font-semibold rounded-full hover:bg-cream hover:text-navy transition-all duration-300"
               data-cursor="Go"
             >
-              Zakažite poziv
+              {t('servicesPage.cta.button')}
             </button>
           </motion.div>
         </div>

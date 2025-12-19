@@ -1,37 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import ServiceCard from './ServiceCard'
-
-const services = [
-  {
-    id: 'web-development',
-    title: 'Razvoj sajtova',
-    description: 'Moderni i brzi web-sajtovi. Od prezentacija do kompleksnih platformi.',
-    icon: '{ }',
-    features: ['Prodavnice', 'Prezentacije', 'Backoffice', 'API razvoj'],
-  },
-  {
-    id: 'mobile-apps',
-    title: 'Aplikacije za telefone',
-    description: 'Aplikacije za iOS i Android. Od igle do lokomotive.',
-    icon: '📱',
-    features: ['iOS & Android', 'Dizajn sajta', 'UI/UX dizajn', 'App Store optimizacija'],
-  },
-  {
-    id: 'digital-marketing',
-    title: 'Digitalni marketing i analitika',
-    description: 'Nije nam cilj da svi vide vaš sajt, već da svi kupe vaš proizvod.',
-    icon: '📈',
-    features: ['Istraživanje tržišta', 'Google Ads', 'Društvene mreže', 'Analitika i praćenje rezultata'],
-  },
-  {
-    id: 'branding',
-    title: 'Brendiranje',
-    description: 'Vizuelni identitet koji ostavlja utisak i gradi poverenje.',
-    icon: '✨',
-    features: ['Logo dizajn', 'Brand strategija', 'UI/UX dizajn', 'Print materijali'],
-  },
-]
+import { useLanguage } from '../../context/LanguageContext'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -47,6 +17,38 @@ const containerVariants = {
 function Services() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const { t } = useLanguage()
+
+  const services = [
+    {
+      id: 'web-development',
+      title: t('services.items.webDevelopment.title'),
+      description: t('services.items.webDevelopment.description'),
+      icon: '{ }',
+      features: t('services.items.webDevelopment.features'),
+    },
+    {
+      id: 'mobile-apps',
+      title: t('services.items.mobileApps.title'),
+      description: t('services.items.mobileApps.description'),
+      icon: '📱',
+      features: t('services.items.mobileApps.features'),
+    },
+    {
+      id: 'digital-marketing',
+      title: t('services.items.digitalMarketing.title'),
+      description: t('services.items.digitalMarketing.description'),
+      icon: '📈',
+      features: t('services.items.digitalMarketing.features'),
+    },
+    {
+      id: 'branding',
+      title: t('services.items.branding.title'),
+      description: t('services.items.branding.description'),
+      icon: '✨',
+      features: t('services.items.branding.features'),
+    },
+  ]
 
   return (
     <section
@@ -84,16 +86,15 @@ function Services() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            Naše usluge
+            {t('services.badge')}
           </motion.span>
           
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-6">
-            Šta mi <span className="text-orange">radimo</span>
+            {t('services.title')} <span className="text-orange">{t('services.titleHighlight')}</span>
           </h2>
           
           <p className="text-navy/60 font-body text-lg max-w-2xl mx-auto">
-            Kombinujemo kreativnost i tehničku ekspertizu da bismo kreirali 
-            digitalna rešenja koja pokreću vaš biznis napred.
+            {t('services.description')}
           </p>
         </motion.div>
 

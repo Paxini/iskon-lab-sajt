@@ -2,10 +2,12 @@ import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import AnimatedInput from './AnimatedInput'
 import MagneticButton from '../ui/MagneticButton'
+import { useLanguage } from '../../context/LanguageContext'
 
 function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const { t } = useLanguage()
   
   const [formData, setFormData] = useState({
     name: '',
@@ -113,16 +115,15 @@ function Contact() {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              Kontakt
+              {t('contact.badge')}
             </motion.span>
 
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-6">
-              Hajde da <span className="text-orange">pričamo</span>
+              {t('contact.title')} <span className="text-orange">{t('contact.titleHighlight')}</span>
             </h2>
 
             <p className="text-navy/60 font-body text-lg mb-8 leading-relaxed">
-              Imate projekat na umu? Javite nam se i zajedno ćemo pretvoriti 
-              vašu ideju u stvarnost. Odgovaramo u roku od 24 sata.
+              {t('contact.description')}
             </p>
 
             {/* Contact info */}
@@ -137,7 +138,7 @@ function Contact() {
                   <span className="text-xl">✉️</span>
                 </div>
                 <div>
-                  <p className="text-navy/50 text-sm font-body">Email</p>
+                  <p className="text-navy/50 text-sm font-body">{t('contact.email')}</p>
                   <p className="text-navy font-display font-medium">hello@iskonlab.com</p>
                 </div>
               </motion.div>
@@ -152,7 +153,7 @@ function Contact() {
                   <span className="text-xl">📱</span>
                 </div>
                 <div>
-                  <p className="text-navy/50 text-sm font-body">Telefon</p>
+                  <p className="text-navy/50 text-sm font-body">{t('contact.phone')}</p>
                   <p className="text-navy font-display font-medium">+381 65 231 8611</p>
                 </div>
               </motion.div>
@@ -167,8 +168,8 @@ function Contact() {
                   <span className="text-xl">📍</span>
                 </div>
                 <div>
-                  <p className="text-navy/50 text-sm font-body">Lokacija</p>
-                  <p className="text-navy font-display font-medium">Beograd, Srbija</p>
+                  <p className="text-navy/50 text-sm font-body">{t('contact.location')}</p>
+                  <p className="text-navy font-display font-medium">{t('contact.locationValue')}</p>
                 </div>
               </motion.div>
             </div>
@@ -190,7 +191,7 @@ function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 font-body text-sm"
                 >
-                  Došlo je do greške. Molimo pokušajte ponovo ili nas kontaktirajte direktno na hello@iskonlab.com
+                  {t('contact.form.error')}
                 </motion.div>
               )}
 
@@ -198,14 +199,14 @@ function Contact() {
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <AnimatedInput
-                      label="Ime i prezime"
+                      label={t('contact.form.name')}
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       required
                     />
                     <AnimatedInput
-                      label="Email"
+                      label={t('contact.form.email')}
                       name="email"
                       type="email"
                       value={formData.email}
@@ -216,7 +217,7 @@ function Contact() {
 
                   <div className="mb-6">
                     <AnimatedInput
-                      label="Kompanija (opciono)"
+                      label={t('contact.form.company')}
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
@@ -225,7 +226,7 @@ function Contact() {
 
                   <div className="mb-8">
                     <AnimatedInput
-                      label="Vaša poruka"
+                      label={t('contact.form.message')}
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
@@ -248,11 +249,11 @@ function Contact() {
                           animate={{ rotate: 360 }}
                           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                         />
-                        <span>Šalje se...</span>
+                        <span>{t('contact.form.sending')}</span>
                       </>
                     ) : (
                       <>
-                        <span>Pošalji poruku</span>
+                        <span>{t('contact.form.submit')}</span>
                         <span>→</span>
                       </>
                     )}
@@ -288,10 +289,10 @@ function Contact() {
                     </motion.svg>
                   </motion.div>
                   <h3 className="font-display text-2xl font-bold text-navy mb-2">
-                    Hvala vam!
+                    {t('contact.form.success')}
                   </h3>
                   <p className="text-navy/60 font-body">
-                    Primili smo vašu poruku. Javićemo vam se uskoro.
+                    {t('contact.form.successMessage')}
                   </p>
                 </motion.div>
               )}

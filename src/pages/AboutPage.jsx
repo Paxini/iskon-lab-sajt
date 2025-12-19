@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -8,31 +9,32 @@ const pageVariants = {
   exit: { opacity: 0, y: -20 },
 }
 
-const stats = [
-  { number: '2', label: 'Osnivača' },
-  { number: 'ETF', label: 'Beograd' },
-  { number: '∞', label: 'Ideja' },
-]
-
-const values = [
-  {
-    title: 'Tehnička izvrsnost',
-    description: 'Softversko inženjerstvo nije samo posao — to je način razmišljanja. Svaki problem ima elegantno rešenje.',
-    icon: '⚡',
-  },
-  {
-    title: 'Razumevanje tržišta',
-    description: 'Kod bez konteksta je samo tekst. Mi razumemo ljude, trendove i šta pokreće odluke.',
-    icon: '🎯',
-  },
-  {
-    title: 'Kreativna hrabrost',
-    description: 'Studenti smo — nemamo šta da izgubimo. To nam daje slobodu da budemo drugačiji.',
-    icon: '🚀',
-  },
-]
-
 function AboutPage() {
+  const { t, getRoute } = useLanguage()
+
+  const stats = [
+    { number: '2', label: t('about.stats.founders') },
+    { number: 'ETF', label: t('about.stats.university') },
+    { number: '∞', label: t('about.stats.ideas') },
+  ]
+
+  const values = [
+    {
+      title: t('about.values.items.excellence.title'),
+      description: t('about.values.items.excellence.description'),
+      icon: '⚡',
+    },
+    {
+      title: t('about.values.items.market.title'),
+      description: t('about.values.items.market.description'),
+      icon: '🎯',
+    },
+    {
+      title: t('about.values.items.creativity.title'),
+      description: t('about.values.items.creativity.description'),
+      icon: '🚀',
+    },
+  ]
   const heroRef = useRef(null)
   const storyRef = useRef(null)
   const valuesRef = useRef(null)
@@ -57,7 +59,7 @@ function AboutPage() {
   }, [])
 
   const handleContactClick = () => {
-    navigate('/')
+    navigate(getRoute('/'))
     setTimeout(() => {
       const element = document.querySelector('#contact')
       if (element && window.lenis) {
@@ -108,7 +110,7 @@ function AboutPage() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block px-4 py-2 bg-orange/20 text-orange font-display text-sm font-semibold rounded-full mb-8">
-              O nama
+              {t('about.badge')}
             </span>
           </motion.div>
 
@@ -118,9 +120,9 @@ function AboutPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-cream leading-tight mb-8"
           >
-            Studenti koji
+            {t('about.heroTitle')}
             <br />
-            <span className="text-orange">grade budućnost</span>
+            <span className="text-orange">{t('about.heroTitleHighlight')}</span>
           </motion.h1>
 
           <motion.p
@@ -129,8 +131,7 @@ function AboutPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-cream/60 font-body text-xl max-w-2xl mx-auto"
           >
-            Između predavanja na ETF-u i ponoćnog kodiranja, pronašli smo nešto 
-            što nas pokreće — spoj tehnologije i razumevanja ljudi.
+            {t('about.heroDescription')}
           </motion.p>
 
           {/* Stats */}
@@ -172,7 +173,7 @@ function AboutPage() {
             className="flex flex-col items-center gap-2"
           >
             <span className="text-cream/40 text-xs font-body uppercase tracking-widest">
-              Naša priča
+              {t('about.ourStory')}
             </span>
             <div className="w-px h-12 bg-gradient-to-b from-orange to-transparent" />
           </motion.div>
@@ -195,9 +196,9 @@ function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-6">
-              Kako je sve <span className="text-orange">počelo</span>
-            </h2>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-6">
+            {t('about.howItStarted')} <span className="text-orange">{t('about.howItStartedHighlight')}</span>
+          </h2>
           </motion.div>
 
           <div className="space-y-24">
@@ -213,14 +214,10 @@ function AboutPage() {
                   01
                 </span>
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-navy -mt-8 mb-4">
-                  ETF Beograd
+                  {t('about.chapter1.title')}
                 </h3>
                 <p className="text-navy/70 font-body text-lg leading-relaxed">
-                  Elektrotehnički fakultet nas je naučio da razmišljamo sistemski. 
-                  Algoritmi, strukture podataka, softversko inženjerstvo — temelji 
-                  na kojima gradimo sve što radimo. Ali fakultet nas je naučio i 
-                  nečem drugom: da najbolja rešenja nastaju kada se teorija susretne 
-                  sa stvarnim svetom.
+                  {t('about.chapter1.description')}
                 </p>
               </div>
               <div className="flex items-center justify-center">
@@ -233,7 +230,7 @@ function AboutPage() {
                     {'{ }'}
                   </span>
                   <span className="text-cream/60 font-body text-sm uppercase tracking-wider">
-                    Softversko inženjerstvo
+                    {t('about.chapter1.label')}
                   </span>
                 </motion.div>
               </div>
@@ -256,7 +253,7 @@ function AboutPage() {
                     ?!
                   </span>
                   <span className="text-cream/80 font-body text-sm uppercase tracking-wider">
-                    Istraživanje tržišta
+                    {t('about.chapter2.label')}
                   </span>
                 </motion.div>
               </div>
@@ -265,14 +262,10 @@ function AboutPage() {
                   02
                 </span>
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-navy -mt-8 mb-4">
-                  Razumevanje ljudi
+                  {t('about.chapter2.title')}
                 </h3>
                 <p className="text-navy/70 font-body text-lg leading-relaxed">
-                  Paralelno sa studijama, zaronili smo u svet istraživanja javnog 
-                  mnjenja i fokus grupa. Naučili smo da slušamo, da postavljamo prava 
-                  pitanja, da razumemo šta ljudi zaista žele — ne šta kažu da žele. 
-                  Ova veština se pokazala neprocenjivom u dizajnu proizvoda i 
-                  marketingu.
+                  {t('about.chapter2.description')}
                 </p>
               </div>
             </motion.div>
@@ -288,13 +281,10 @@ function AboutPage() {
                 03
               </span>
               <h3 className="font-display text-2xl md:text-3xl font-bold text-navy -mt-8 mb-4">
-                Iskon Lab
+                {t('about.chapter3.title')}
               </h3>
               <p className="text-navy/70 font-body text-lg leading-relaxed mb-8">
-                Tako je nastao Iskon Lab — laboratorija gde se spajaju kod i 
-                empatija, algoritmi i intuicija, tehnologija i razumevanje 
-                ljudi. Ime "Iskon" znači početak, izvor — i to je upravo ono 
-                što želimo da budemo za vaše projekte.
+                {t('about.chapter3.description')}
               </p>
               <motion.div
                 className="inline-flex items-center gap-4 px-8 py-4 bg-navy/5 rounded-full"
@@ -302,7 +292,7 @@ function AboutPage() {
               >
                 <span className="text-4xl">💡</span>
                 <span className="font-display font-semibold text-navy">
-                  Kod + Empatija = Rezultati
+                  {t('about.chapter3.formula')}
                 </span>
               </motion.div>
             </motion.div>
@@ -328,12 +318,12 @@ function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6">
-              Šta nas <span className="text-orange">definiše</span>
-            </h2>
-            <p className="text-cream/60 font-body text-lg max-w-2xl mx-auto">
-              Tri principa koja nas vode u svakom projektu
-            </p>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6">
+            {t('about.values.title')} <span className="text-orange">{t('about.values.titleHighlight')}</span>
+          </h2>
+          <p className="text-cream/60 font-body text-lg max-w-2xl mx-auto">
+            {t('about.values.description')}
+          </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -379,9 +369,9 @@ function AboutPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              MI NE SAMO
+              {t('about.statement.line1')}
               <br />
-              <span className="text-orange">KODIRAMO</span>
+              <span className="text-orange">{t('about.statement.line2')}</span>
             </motion.span>
             <motion.p
               className="text-navy/60 font-body text-xl md:text-2xl max-w-2xl mx-auto"
@@ -390,8 +380,7 @@ function AboutPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Mi slušamo, istražujemo, razumemo — i tek onda stvaramo rešenja 
-              koja zaista funkcionišu.
+              {t('about.statement.description')}
             </motion.p>
           </motion.div>
         </div>
@@ -407,17 +396,17 @@ function AboutPage() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-cream mb-6">
-              Spremni da započnemo?
+              {t('about.cta.title')}
             </h2>
             <p className="text-cream/60 font-body text-lg mb-8">
-              Vaša ideja zaslužuje tim koji će je razumeti i realizovati.
+              {t('about.cta.description')}
             </p>
             <button
               onClick={handleContactClick}
               className="inline-block px-8 py-4 bg-orange text-cream font-display font-semibold rounded-full hover:bg-cream hover:text-navy transition-all duration-300"
               data-cursor="Go"
             >
-              Kontaktirajte nas
+              {t('about.cta.button')}
             </button>
           </motion.div>
         </div>

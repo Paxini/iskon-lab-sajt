@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../../context/LanguageContext'
+import { getLocalizedProject } from '../../data/projects'
 
 function ProjectCard({ project, index }) {
   const [isHovered, setIsHovered] = useState(false)
+  const { t, getProjectRoute, language } = useLanguage()
+  
+  // Get localized project data
+  const localizedProject = getLocalizedProject(project, language)
 
   return (
     <motion.div
@@ -20,7 +26,7 @@ function ProjectCard({ project, index }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Link to={`/projekti/${project.id}`} data-cursor="View">
+      <Link to={getProjectRoute(project.id)} data-cursor="View">
         <motion.div
           className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-cream-dark"
           whileHover={{ y: -10 }}
@@ -29,7 +35,7 @@ function ProjectCard({ project, index }) {
           {/* Image */}
           <motion.img
             src={project.image}
-            alt={project.title}
+            alt={localizedProject.title}
             className="w-full h-full object-cover"
             animate={{
               scale: isHovered ? 1.1 : 1,
@@ -62,7 +68,7 @@ function ProjectCard({ project, index }) {
               animate={{ y: isHovered ? -5 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              {project.title}
+              {localizedProject.title}
             </motion.h3>
 
             <motion.p
@@ -74,7 +80,7 @@ function ProjectCard({ project, index }) {
               }}
               transition={{ duration: 0.3 }}
             >
-              {project.description}
+              {localizedProject.description}
             </motion.p>
 
             {/* View project button */}
@@ -88,7 +94,7 @@ function ProjectCard({ project, index }) {
               transition={{ duration: 0.3, delay: 0.1 }}
             >
               <span className="text-orange font-display font-semibold text-sm">
-                Pogledaj projekat
+                {t('portfolio.viewProject')}
               </span>
               <motion.span
                 className="text-orange"

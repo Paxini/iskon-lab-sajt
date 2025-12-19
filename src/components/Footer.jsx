@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import MagneticButton from './ui/MagneticButton'
+import { useLanguage } from '../context/LanguageContext'
 
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://linkedin.com' },
@@ -8,25 +9,29 @@ const socialLinks = [
   { name: 'GitHub', href: 'https://github.com' },
 ]
 
-const quickLinks = [
-  { name: 'Usluge', href: '/usluge', type: 'route' },
-  { name: 'Portfolio', href: '/projekti', type: 'route' },
-  { name: 'O nama', href: '/o-nama', type: 'route' },
-  { name: 'Kontakt', href: '#contact', type: 'scroll' },
-]
-
 function Footer() {
   const currentYear = new Date().getFullYear()
   const navigate = useNavigate()
   const location = useLocation()
+  const { t, getRoute } = useLanguage()
+
+  const quickLinks = [
+    { name: t('nav.services'), href: getRoute('/usluge'), type: 'route' },
+    { name: t('nav.portfolio'), href: getRoute('/projekti'), type: 'route' },
+    { name: t('nav.about'), href: getRoute('/o-nama'), type: 'route' },
+    { name: t('nav.contact'), href: '#contact', type: 'scroll' },
+  ]
+
+  const homeRoute = getRoute('/')
 
   const handleLinkClick = (link) => {
     if (link.type === 'route') {
       navigate(link.href)
     } else {
       // Scroll to contact section
-      if (location.pathname !== '/') {
-        navigate('/')
+      const isHomePage = location.pathname === '/' || location.pathname === '/en'
+      if (!isHomePage) {
+        navigate(homeRoute)
         setTimeout(() => {
           const element = document.querySelector(link.href)
           if (element && window.lenis) {
@@ -71,16 +76,16 @@ function Footer() {
               whileHover={{ scale: 1.05 }}
             />
             <p className="text-cream/70 font-body text-sm max-w-xs">
-              Digitalna rešenja bez granica. Povezujemo kreativnost i tehnologiju.
+              {t('footer.tagline')}
             </p>
             <p className="text-cream/50 text-sm font-body">
-              Srbija → Svet
+              {t('footer.location')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="font-display font-semibold text-lg">Brzi linkovi</h4>
+            <h4 className="font-display font-semibold text-lg">{t('footer.quickLinks')}</h4>
             <nav className="flex flex-col gap-2">
               {quickLinks.map((link) => (
                 <motion.button
@@ -97,7 +102,7 @@ function Footer() {
 
           {/* Contact & Social */}
           <div className="space-y-4">
-            <h4 className="font-display font-semibold text-lg">Kontakt</h4>
+            <h4 className="font-display font-semibold text-lg">{t('footer.contact')}</h4>
             <div className="space-y-2 text-cream/70 font-body text-sm">
               <p>hello@iskonlab.com</p>
               <p>+381 65 231 8611</p>
@@ -129,10 +134,10 @@ function Footer() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-cream/50 text-sm font-body">
-            © {currentYear} Iskon Lab. Sva prava zadržana.
+            © {currentYear} Iskon Lab. {t('footer.copyright')}
           </p>
           <p className="text-cream/50 text-sm font-body">
-            Napravljeno sa strašću u Srbiji
+            {t('footer.madeWith')}
           </p>
         </motion.div>
       </div>

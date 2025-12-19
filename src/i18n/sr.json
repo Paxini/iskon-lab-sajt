@@ -1,0 +1,328 @@
+{
+  "nav": {
+    "home": "Početna",
+    "about": "O nama",
+    "services": "Usluge",
+    "portfolio": "Portfolio",
+    "contact": "Kontakt",
+    "startProject": "Započni projekat"
+  },
+  "hero": {
+    "tagline": "Digitalna rešenja bez granica",
+    "description": "Transformišemo vaše ideje u digitalne proizvode koji inspirišu, angažuju i donose rezultate.",
+    "cta": "Započni projekat",
+    "ourServices": "Naše usluge",
+    "scroll": "Skroluj"
+  },
+  "services": {
+    "badge": "Naše usluge",
+    "title": "Šta mi",
+    "titleHighlight": "radimo",
+    "description": "Kombinujemo kreativnost i tehničku ekspertizu da bismo kreirali digitalna rešenja koja pokreću vaš biznis napred.",
+    "learnMore": "Saznaj više",
+    "items": {
+      "webDevelopment": {
+        "title": "Razvoj sajtova",
+        "description": "Moderni i brzi web-sajtovi. Od prezentacija do kompleksnih platformi.",
+        "features": ["Prodavnice", "Prezentacije", "Backoffice", "API razvoj"]
+      },
+      "mobileApps": {
+        "title": "Aplikacije za telefone",
+        "description": "Aplikacije za iOS i Android. Od igle do lokomotive.",
+        "features": ["iOS & Android", "Dizajn sajta", "UI/UX dizajn", "App Store optimizacija"]
+      },
+      "digitalMarketing": {
+        "title": "Digitalni marketing i analitika",
+        "description": "Nije nam cilj da svi vide vaš sajt, već da svi kupe vaš proizvod.",
+        "features": ["Istraživanje tržišta", "Google Ads", "Društvene mreže", "Analitika i praćenje rezultata"]
+      },
+      "branding": {
+        "title": "Brendiranje",
+        "description": "Vizuelni identitet koji ostavlja utisak i gradi poverenje.",
+        "features": ["Logo dizajn", "Brand strategija", "UI/UX dizajn", "Print materijali"]
+      }
+    }
+  },
+  "portfolio": {
+    "badge": "Portfolio",
+    "title": "Izabrani",
+    "titleHighlight": "projekti",
+    "description": "Pogledajte neke od projekata na koje smo posebno ponosni. Svaki je priča za sebe.",
+    "viewAll": "Pogledaj sve projekte",
+    "viewProject": "Pogledaj projekat",
+    "filters": {
+      "all": "Sve",
+      "web": "Web",
+      "mobile": "Mobile",
+      "branding": "Branding"
+    }
+  },
+  "contact": {
+    "badge": "Kontakt",
+    "title": "Hajde da",
+    "titleHighlight": "pričamo",
+    "description": "Imate projekat na umu? Javite nam se i zajedno ćemo pretvoriti vašu ideju u stvarnost. Odgovaramo u roku od 24 sata.",
+    "email": "Email",
+    "phone": "Telefon",
+    "location": "Lokacija",
+    "locationValue": "Beograd, Srbija",
+    "form": {
+      "name": "Ime i prezime",
+      "email": "Email",
+      "company": "Kompanija (opciono)",
+      "message": "Vaša poruka",
+      "submit": "Pošalji poruku",
+      "sending": "Šalje se...",
+      "success": "Hvala vam!",
+      "successMessage": "Primili smo vašu poruku. Javićemo vam se uskoro.",
+      "error": "Došlo je do greške. Molimo pokušajte ponovo ili nas kontaktirajte direktno na hello@iskonlab.com"
+    }
+  },
+  "footer": {
+    "tagline": "Digitalna rešenja bez granica. Povezujemo kreativnost i tehnologiju.",
+    "location": "Srbija → Svet",
+    "quickLinks": "Brzi linkovi",
+    "contact": "Kontakt",
+    "copyright": "Sva prava zadržana.",
+    "madeWith": "Napravljeno sa strašću u Srbiji"
+  },
+  "about": {
+    "badge": "O nama",
+    "heroTitle": "Studenti koji",
+    "heroTitleHighlight": "grade budućnost",
+    "heroDescription": "Između predavanja na ETF-u i ponoćnog kodiranja, pronašli smo nešto što nas pokreće — spoj tehnologije i razumevanja ljudi.",
+    "stats": {
+      "founders": "Osnivača",
+      "university": "Beograd",
+      "ideas": "Ideja"
+    },
+    "ourStory": "Naša priča",
+    "howItStarted": "Kako je sve",
+    "howItStartedHighlight": "počelo",
+    "chapter1": {
+      "title": "ETF Beograd",
+      "description": "Elektrotehnički fakultet nas je naučio da razmišljamo sistemski. Algoritmi, strukture podataka, softversko inženjerstvo — temelji na kojima gradimo sve što radimo. Ali fakultet nas je naučio i nečem drugom: da najbolja rešenja nastaju kada se teorija susretne sa stvarnim svetom.",
+      "label": "Softversko inženjerstvo"
+    },
+    "chapter2": {
+      "title": "Razumevanje ljudi",
+      "description": "Paralelno sa studijama, zaronili smo u svet istraživanja javnog mnjenja i fokus grupa. Naučili smo da slušamo, da postavljamo prava pitanja, da razumemo šta ljudi zaista žele — ne šta kažu da žele. Ova veština se pokazala neprocenjivom u dizajnu proizvoda i marketingu.",
+      "label": "Istraživanje tržišta"
+    },
+    "chapter3": {
+      "title": "Iskon Lab",
+      "description": "Tako je nastao Iskon Lab — laboratorija gde se spajaju kod i empatija, algoritmi i intuicija, tehnologija i razumevanje ljudi. Ime \"Iskon\" znači početak, izvor — i to je upravo ono što želimo da budemo za vaše projekte.",
+      "formula": "Kod + Empatija = Rezultati"
+    },
+    "values": {
+      "title": "Šta nas",
+      "titleHighlight": "definiše",
+      "description": "Tri principa koja nas vode u svakom projektu",
+      "items": {
+        "excellence": {
+          "title": "Tehnička izvrsnost",
+          "description": "Softversko inženjerstvo nije samo posao — to je način razmišljanja. Svaki problem ima elegantno rešenje."
+        },
+        "market": {
+          "title": "Razumevanje tržišta",
+          "description": "Kod bez konteksta je samo tekst. Mi razumemo ljude, trendove i šta pokreće odluke."
+        },
+        "creativity": {
+          "title": "Kreativna hrabrost",
+          "description": "Studenti smo — nemamo šta da izgubimo. To nam daje slobodu da budemo drugačiji."
+        }
+      }
+    },
+    "statement": {
+      "line1": "MI NE SAMO",
+      "line2": "KODIRAMO",
+      "description": "Mi slušamo, istražujemo, razumemo — i tek onda stvaramo rešenja koja zaista funkcionišu."
+    },
+    "cta": {
+      "title": "Spremni da započnemo?",
+      "description": "Vaša ideja zaslužuje tim koji će je razumeti i realizovati.",
+      "button": "Kontaktirajte nas"
+    }
+  },
+  "servicesPage": {
+    "badge": "Usluge",
+    "heroTitle": "Šta mi",
+    "heroTitleHighlight": "radimo",
+    "heroDescription": "Kombinujemo tehničku ekspertizu sa razumevanjem tržišta da bismo kreirali digitalna rešenja koja donose rezultate.",
+    "clickToLearn": "Kliknite da saznate više",
+    "eachService": "Svaka usluga je priča za sebe",
+    "process": "Proces:",
+    "services": {
+      "webDevelopment": {
+        "title": "Razvoj sajtova",
+        "subtitle": "Od ideje do produkcije",
+        "description": "Gradimo moderne, brze i skalabilne web aplikacije koje ostavljaju utisak.",
+        "longDescription": "Svaki web projekat započinjemo dubokim razumevanjem vaših ciljeva i potreba korisnika. Koristimo najnovije tehnologije i najbolje prakse da bismo kreirali rešenja koja nisu samo vizuelno impresivna, već i tehnički superiorna.",
+        "capabilities": {
+          "frontend": {
+            "title": "Frontend Development",
+            "items": ["React / Next.js", "Vue.js", "Tailwind CSS", "Framer Motion animacije"]
+          },
+          "backend": {
+            "title": "Backend Development",
+            "items": ["Node.js / Express", "PHP / Laravel", "REST & GraphQL API", "Database dizajn"]
+          },
+          "specializations": {
+            "title": "Specijalizacije",
+            "items": ["E-commerce platforme", "CMS integracije", "Payment gateway", "Real-time aplikacije"]
+          }
+        },
+        "process": ["Analiza potreba", "Development", "Testiranje", "Deployment"]
+      },
+      "mobileApps": {
+        "title": "Aplikacije za telefone",
+        "subtitle": "U džepu vaših korisnika",
+        "description": "Nativne i cross-platform aplikacije koje korisnici vole da koriste.",
+        "longDescription": "Mobilne aplikacije su danas često prvi kontakt korisnika sa vašim brendom. Zato kreiramo aplikacije koje su intuitivne, brze i prijatne za korišćenje — aplikacije koje korisnici preporučuju prijateljima.",
+        "capabilities": {
+          "platforms": {
+            "title": "Platforme",
+            "items": ["iOS (Swift)", "Android (Kotlin)", "React Native", "Flutter"]
+          },
+          "features": {
+            "title": "Funkcionalnosti",
+            "items": ["Push notifikacije", "Offline mode", "Biometrijska autentifikacija", "Kupovine u aplikaciji"]
+          },
+          "integrations": {
+            "title": "Integracije",
+            "items": ["Social login", "Maps & lokacija", "Payment sistemi", "Analitika"]
+          }
+        },
+        "process": ["Istraživanje", "UX/UI", "Development", "Beta testing", "App Store"]
+      },
+      "digitalMarketing": {
+        "title": "Digitalni Marketing",
+        "subtitle": "Strategije koje donose rezultate",
+        "description": "Data-driven marketing koji pretvara posetioce u kupce.",
+        "longDescription": "Marketing bez podataka je nagađanje. Mi kombinujemo analitičko razmišljanje sa kreativnošću da bismo kreirali kampanje koje zaista funkcionišu. Svaka odluka je potkrepljena podacima, svaki rezultat je merljiv.",
+        "capabilities": {
+          "seo": {
+            "title": "SEO & Content",
+            "items": ["Tehnički SEO", "Content strategija", "Link building", "Local SEO"]
+          },
+          "paid": {
+            "title": "Paid Advertising",
+            "items": ["Google Ads", "Meta Ads", "LinkedIn Ads", "Remarketing"]
+          },
+          "analytics": {
+            "title": "Analytics",
+            "items": ["Google Analytics 4", "Conversion tracking", "A/B testiranje", "ROI analiza"]
+          }
+        },
+        "process": ["Audit", "Strategija", "Implementacija", "Optimizacija", "Reporting"]
+      },
+      "branding": {
+        "title": "Brending",
+        "subtitle": "Identitet koji se pamti",
+        "description": "Vizuelni identitet koji gradi poverenje i prepoznatljivost.",
+        "longDescription": "Brend je više od loga — to je celokupno iskustvo koje korisnici imaju sa vašom kompanijom. Mi kreiramo koherentne vizuelne identitete koji komuniciraju vaše vrednosti i ostavljaju trajan utisak.",
+        "capabilities": {
+          "visual": {
+            "title": "Vizuelni identitet",
+            "items": ["Logo dizajn", "Paleta boja", "Tipografija", "Ikonografija"]
+          },
+          "materials": {
+            "title": "Brand materijali",
+            "items": ["Vizit karte", "Prezentacije", "Social media assets", "Print materijali"]
+          },
+          "strategy": {
+            "title": "Strategija",
+            "items": ["Brand positioning", "Tone of voice", "Brand guidelines", "Competitor analiza"]
+          }
+        },
+        "process": ["Discovery", "Koncepti", "Dizajn", "Refinement", "Delivery"]
+      }
+    },
+    "ourProcess": {
+      "title": "Naš",
+      "titleHighlight": "proces",
+      "description": "Transparentan i efikasan pristup svakom projektu",
+      "steps": {
+        "step1": {
+          "title": "Razgovor",
+          "description": "Slušamo vašu viziju i definišemo ciljeve projekta."
+        },
+        "step2": {
+          "title": "Strategija",
+          "description": "Kreiramo detaljan plan i biramo prave tehnologije."
+        },
+        "step3": {
+          "title": "Kreacija",
+          "description": "Dizajniramo i razvijamo uz konstantnu komunikaciju."
+        },
+        "step4": {
+          "title": "Lansiranje",
+          "description": "Testiramo, optimizujemo i puštamo u produkciju."
+        },
+        "step5": {
+          "title": "Podrška",
+          "description": "Ostajemo uz vas i nakon završetka projekta."
+        }
+      }
+    },
+    "whyUs": {
+      "title": "Zašto",
+      "titleHighlight": "mi?",
+      "items": {
+        "understand": {
+          "title": "Razumemo vas",
+          "description": "Razumemo vaše potrebe i potrebe tržišta i pravimo ono što vam treba."
+        },
+        "excellence": {
+          "title": "Tehnička izvrsnost",
+          "description": "Praktično iskustvo u velikim projektima garantuje kvalitet i performanse."
+        },
+        "transparency": {
+          "title": "Transparentnost",
+          "description": "Znate tačno šta se dešava u svakom trenutku. Bez iznenađenja."
+        },
+        "dedication": {
+          "title": "Posvećenost",
+          "description": "Vaš uspeh je naš uspeh. Radimo dok niste potpuno zadovoljni."
+        }
+      }
+    },
+    "cta": {
+      "title": "Spremni da počnemo?",
+      "description": "Razgovarajmo o vašem projektu. Besplatna konsultacija, bez obaveza.",
+      "button": "Zakažite poziv"
+    }
+  },
+  "projectsPage": {
+    "badge": "Portfolio",
+    "title": "Naši",
+    "titleHighlight": "projekti",
+    "description": "Istražite našu kolekciju projekata. Svaki predstavlja jedinstvenu priču o saradnji, kreativnosti i tehničkoj izvrsnosti.",
+    "stats": {
+      "projects": "Projekata",
+      "clients": "Klijenata",
+      "satisfaction": "Zadovoljstvo"
+    },
+    "noProjects": "Nema projekata u ovoj kategoriji.",
+    "cta": {
+      "title": "Imate projekat na umu?",
+      "description": "Hajde da razgovaramo o vašoj ideji i pretvorimo je u stvarnost.",
+      "button": "Kontaktirajte nas"
+    }
+  },
+  "projectDetail": {
+    "aboutProject": "O projektu",
+    "client": "Klijent",
+    "year": "Godina",
+    "technologies": "Tehnologije",
+    "allProjects": "Svi projekti",
+    "prevProject": "Prethodni projekat",
+    "nextProject": "Sledeći projekat",
+    "notFound": {
+      "title": "Projekat nije pronađen",
+      "description": "Projekat koji tražite ne postoji ili je uklonjen.",
+      "backButton": "← Nazad na projekte"
+    }
+  }
+}
+

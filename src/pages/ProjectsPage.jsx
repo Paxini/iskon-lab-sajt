@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Link, useNavigate } from 'react-router-dom'
-import { projects, categories, getProjectsByCategory } from '../data/projects'
+import { projects, categories, getProjectsByCategory, getLocalizedProject } from '../data/projects'
+import { useLanguage } from '../context/LanguageContext'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -11,6 +12,8 @@ const pageVariants = {
 
 function ProjectCard({ project, index }) {
   const [isHovered, setIsHovered] = useState(false)
+  const { t, getProjectRoute, language } = useLanguage()
+  const localizedProject = getLocalizedProject(project, language)
 
   return (
     <motion.div
@@ -27,7 +30,7 @@ function ProjectCard({ project, index }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Link to={`/projekti/${project.id}`} data-cursor="View">
+      <Link to={getProjectRoute(project.id)} data-cursor="View">
         <motion.div
           className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-cream-dark"
           whileHover={{ y: -10 }}
@@ -36,7 +39,7 @@ function ProjectCard({ project, index }) {
           {/* Image */}
           <motion.img
             src={project.image}
-            alt={project.title}
+            alt={localizedProject.title}
             className="w-full h-full object-cover"
             animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -67,7 +70,7 @@ function ProjectCard({ project, index }) {
               animate={{ y: isHovered ? -5 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              {project.title}
+              {localizedProject.title}
             </motion.h3>
 
             <motion.p
@@ -76,7 +79,7 @@ function ProjectCard({ project, index }) {
               animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
               transition={{ duration: 0.3 }}
             >
-              {project.description}
+              {localizedProject.description}
             </motion.p>
 
             {/* Technologies */}
@@ -120,8 +123,18 @@ function ProjectsPage() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
   const navigate = useNavigate()
+  const { t, getRoute } = useLanguage()
 
   const filteredProjects = getProjectsByCategory(activeFilter)
+  
+  // Translated categories
+  const translatedCategories = categories.map(cat => {
+    if (cat === 'Sve') return { original: cat, display: t('portfolio.filters.all') }
+    if (cat === 'Web') return { original: cat, display: t('portfolio.filters.web') }
+    if (cat === 'Mobile') return { original: cat, display: t('portfolio.filters.mobile') }
+    if (cat === 'Branding') return { original: cat, display: t('portfolio.filters.branding') }
+    return { original: cat, display: cat }
+  })
 
   // Scroll to top on page load
   useEffect(() => {
@@ -132,7 +145,7 @@ function ProjectsPage() {
   }, [])
 
   const handleContactClick = () => {
-    navigate('/')
+    navigate(getRoute('/'))
     setTimeout(() => {
       const element = document.querySelector('#contact')
       if (element && window.lenis) {
@@ -189,16 +202,15 @@ function ProjectsPage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Portfolio
+              {t('projectsPage.badge')}
             </motion.span>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6">
-              Naši <span className="text-orange">projekti</span>
+              {t('projectsPage.title')} <span className="text-orange">{t('projectsPage.titleHighlight')}</span>
             </h1>
 
             <p className="text-cream/60 font-body text-lg max-w-2xl mx-auto mb-8">
-              Istražite našu kolekciju projekata. Svaki predstavlja jedinstvenu priču
-              o saradnji, kreativnosti i tehničkoj izvrsnosti.
+              {t('projectsPage.description')}
             </p>
 
             {/* Stats */}
@@ -212,7 +224,7 @@ function ProjectsPage() {
                 <span className="block font-display text-4xl font-bold text-orange">
                   {projects.length}+
                 </span>
-                <span className="text-cream/60 font-body text-sm">Projekata</span>
+                <span className="text-cream/60 font-body text-sm">{t('projectsPage.stats.projects')}</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -223,7 +235,7 @@ function ProjectsPage() {
                 <span className="block font-display text-4xl font-bold text-orange">
                   {new Set(projects.map((p) => p.client)).size}+
                 </span>
-                <span className="text-cream/60 font-body text-sm">Klijenata</span>
+                <span className="text-cream/60 font-body text-sm">{t('projectsPage.stats.clients')}</span>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -234,7 +246,7 @@ function ProjectsPage() {
                 <span className="block font-display text-4xl font-bold text-orange">
                   100%
                 </span>
-                <span className="text-cream/60 font-body text-sm">Zadovoljstvo</span>
+                <span className="text-cream/60 font-body text-sm">{t('projectsPage.stats.satisfaction')}</span>
               </motion.div>
             </div>
           </motion.div>
@@ -251,12 +263,12 @@ function ProjectsPage() {
             transition={{ duration: 0.6 }}
             className="flex flex-wrap justify-center gap-4 mb-12"
           >
-            {categories.map((category) => (
+            {translatedCategories.map((category) => (
               <motion.button
-                key={category}
-                onClick={() => setActiveFilter(category)}
+                key={category.original}
+                onClick={() => setActiveFilter(category.original)}
                 className={`px-6 py-3 rounded-full font-display font-medium transition-all duration-300 ${
-                  activeFilter === category
+                  activeFilter === category.original
                     ? 'bg-navy text-cream'
                     : 'bg-navy/5 text-navy hover:bg-navy/10'
                 }`}
@@ -264,10 +276,10 @@ function ProjectsPage() {
                 whileTap={{ scale: 0.95 }}
                 data-cursor="Filter"
               >
-                {category}
-                {category !== 'Sve' && (
+                {category.display}
+                {category.original !== 'Sve' && (
                   <span className="ml-2 text-xs opacity-60">
-                    ({projects.filter((p) => p.category === category).length})
+                    ({projects.filter((p) => p.category === category.original).length})
                   </span>
                 )}
               </motion.button>
@@ -291,7 +303,7 @@ function ProjectsPage() {
               className="text-center py-20"
             >
               <p className="text-navy/60 font-body text-lg">
-                Nema projekata u ovoj kategoriji.
+                {t('projectsPage.noProjects')}
               </p>
             </motion.div>
           )}
@@ -308,17 +320,17 @@ function ProjectsPage() {
             viewport={{ once: true }}
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-cream mb-6">
-              Imate projekat na umu?
+              {t('projectsPage.cta.title')}
             </h2>
             <p className="text-cream/60 font-body text-lg mb-8">
-              Hajde da razgovaramo o vašoj ideji i pretvorimo je u stvarnost.
+              {t('projectsPage.cta.description')}
             </p>
             <button
               onClick={handleContactClick}
               className="inline-block px-8 py-4 bg-orange text-cream font-display font-semibold rounded-full hover:bg-cream hover:text-navy transition-all duration-300"
               data-cursor="Go"
             >
-              Kontaktirajte nas
+              {t('projectsPage.cta.button')}
             </button>
           </motion.div>
         </div>

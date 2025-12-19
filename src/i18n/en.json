@@ -1,0 +1,328 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact",
+    "startProject": "Start a project"
+  },
+  "hero": {
+    "tagline": "Digital solutions without limits",
+    "description": "We transform your ideas into digital products that inspire, engage, and deliver results.",
+    "cta": "Start a project",
+    "ourServices": "Our services",
+    "scroll": "Scroll"
+  },
+  "services": {
+    "badge": "Our services",
+    "title": "What we",
+    "titleHighlight": "do",
+    "description": "We combine creativity and technical expertise to create digital solutions that drive your business forward.",
+    "learnMore": "Learn more",
+    "items": {
+      "webDevelopment": {
+        "title": "Web Development",
+        "description": "Modern and fast websites. From landing pages to complex platforms.",
+        "features": ["E-commerce", "Presentations", "Backoffice", "API development"]
+      },
+      "mobileApps": {
+        "title": "Mobile Applications",
+        "description": "iOS and Android applications. From simple to complex.",
+        "features": ["iOS & Android", "Web design", "UI/UX design", "App Store optimization"]
+      },
+      "digitalMarketing": {
+        "title": "Digital Marketing & Analytics",
+        "description": "Our goal isn't for everyone to see your site, but for everyone to buy your product.",
+        "features": ["Market research", "Google Ads", "Social media", "Analytics and tracking"]
+      },
+      "branding": {
+        "title": "Branding",
+        "description": "Visual identity that makes an impression and builds trust.",
+        "features": ["Logo design", "Brand strategy", "UI/UX design", "Print materials"]
+      }
+    }
+  },
+  "portfolio": {
+    "badge": "Portfolio",
+    "title": "Featured",
+    "titleHighlight": "projects",
+    "description": "Take a look at some projects we're particularly proud of. Each one is a story of its own.",
+    "viewAll": "View all projects",
+    "viewProject": "View project",
+    "filters": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile",
+      "branding": "Branding"
+    }
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Let's",
+    "titleHighlight": "talk",
+    "description": "Have a project in mind? Get in touch and together we'll turn your idea into reality. We respond within 24 hours.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "locationValue": "Belgrade, Serbia",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "company": "Company (optional)",
+      "message": "Your message",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Thank you!",
+      "successMessage": "We received your message. We'll get back to you soon.",
+      "error": "An error occurred. Please try again or contact us directly at hello@iskonlab.com"
+    }
+  },
+  "footer": {
+    "tagline": "Digital solutions without limits. Connecting creativity and technology.",
+    "location": "Serbia → World",
+    "quickLinks": "Quick links",
+    "contact": "Contact",
+    "copyright": "All rights reserved.",
+    "madeWith": "Made with passion in Serbia"
+  },
+  "about": {
+    "badge": "About us",
+    "heroTitle": "Students who",
+    "heroTitleHighlight": "build the future",
+    "heroDescription": "Between ETF lectures and midnight coding sessions, we found something that drives us — the fusion of technology and understanding people.",
+    "stats": {
+      "founders": "Founders",
+      "university": "Belgrade",
+      "ideas": "Ideas"
+    },
+    "ourStory": "Our story",
+    "howItStarted": "How it all",
+    "howItStartedHighlight": "started",
+    "chapter1": {
+      "title": "ETF Belgrade",
+      "description": "The Faculty of Electrical Engineering taught us to think systematically. Algorithms, data structures, software engineering — the foundations on which we build everything we do. But the university also taught us something else: that the best solutions emerge when theory meets the real world.",
+      "label": "Software engineering"
+    },
+    "chapter2": {
+      "title": "Understanding people",
+      "description": "Alongside our studies, we dove into the world of public opinion research and focus groups. We learned to listen, to ask the right questions, to understand what people really want — not what they say they want. This skill proved invaluable in product design and marketing.",
+      "label": "Market research"
+    },
+    "chapter3": {
+      "title": "Iskon Lab",
+      "description": "This is how Iskon Lab was born — a laboratory where code and empathy merge, algorithms and intuition, technology and understanding of people. The name \"Iskon\" means beginning, source — and that's exactly what we want to be for your projects.",
+      "formula": "Code + Empathy = Results"
+    },
+    "values": {
+      "title": "What",
+      "titleHighlight": "defines us",
+      "description": "Three principles that guide us in every project",
+      "items": {
+        "excellence": {
+          "title": "Technical excellence",
+          "description": "Software engineering isn't just a job — it's a way of thinking. Every problem has an elegant solution."
+        },
+        "market": {
+          "title": "Market understanding",
+          "description": "Code without context is just text. We understand people, trends, and what drives decisions."
+        },
+        "creativity": {
+          "title": "Creative courage",
+          "description": "We're students — we have nothing to lose. That gives us the freedom to be different."
+        }
+      }
+    },
+    "statement": {
+      "line1": "WE DON'T JUST",
+      "line2": "CODE",
+      "description": "We listen, research, understand — and only then create solutions that truly work."
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "description": "Your idea deserves a team that will understand and realize it.",
+      "button": "Contact us"
+    }
+  },
+  "servicesPage": {
+    "badge": "Services",
+    "heroTitle": "What we",
+    "heroTitleHighlight": "do",
+    "heroDescription": "We combine technical expertise with market understanding to create digital solutions that deliver results.",
+    "clickToLearn": "Click to learn more",
+    "eachService": "Each service is a story of its own",
+    "process": "Process:",
+    "services": {
+      "webDevelopment": {
+        "title": "Web Development",
+        "subtitle": "From idea to production",
+        "description": "We build modern, fast, and scalable web applications that make an impression.",
+        "longDescription": "We start every web project with a deep understanding of your goals and user needs. We use the latest technologies and best practices to create solutions that are not only visually impressive but also technically superior.",
+        "capabilities": {
+          "frontend": {
+            "title": "Frontend Development",
+            "items": ["React / Next.js", "Vue.js", "Tailwind CSS", "Framer Motion animations"]
+          },
+          "backend": {
+            "title": "Backend Development",
+            "items": ["Node.js / Express", "PHP / Laravel", "REST & GraphQL API", "Database design"]
+          },
+          "specializations": {
+            "title": "Specializations",
+            "items": ["E-commerce platforms", "CMS integrations", "Payment gateway", "Real-time applications"]
+          }
+        },
+        "process": ["Requirements analysis", "Development", "Testing", "Deployment"]
+      },
+      "mobileApps": {
+        "title": "Mobile Applications",
+        "subtitle": "In your users' pocket",
+        "description": "Native and cross-platform applications that users love to use.",
+        "longDescription": "Mobile applications are often the first contact users have with your brand today. That's why we create applications that are intuitive, fast, and pleasant to use — applications that users recommend to friends.",
+        "capabilities": {
+          "platforms": {
+            "title": "Platforms",
+            "items": ["iOS (Swift)", "Android (Kotlin)", "React Native", "Flutter"]
+          },
+          "features": {
+            "title": "Features",
+            "items": ["Push notifications", "Offline mode", "Biometric authentication", "In-app purchases"]
+          },
+          "integrations": {
+            "title": "Integrations",
+            "items": ["Social login", "Maps & location", "Payment systems", "Analytics"]
+          }
+        },
+        "process": ["Research", "UX/UI", "Development", "Beta testing", "App Store"]
+      },
+      "digitalMarketing": {
+        "title": "Digital Marketing",
+        "subtitle": "Strategies that deliver results",
+        "description": "Data-driven marketing that converts visitors into customers.",
+        "longDescription": "Marketing without data is guesswork. We combine analytical thinking with creativity to create campaigns that actually work. Every decision is backed by data, every result is measurable.",
+        "capabilities": {
+          "seo": {
+            "title": "SEO & Content",
+            "items": ["Technical SEO", "Content strategy", "Link building", "Local SEO"]
+          },
+          "paid": {
+            "title": "Paid Advertising",
+            "items": ["Google Ads", "Meta Ads", "LinkedIn Ads", "Remarketing"]
+          },
+          "analytics": {
+            "title": "Analytics",
+            "items": ["Google Analytics 4", "Conversion tracking", "A/B testing", "ROI analysis"]
+          }
+        },
+        "process": ["Audit", "Strategy", "Implementation", "Optimization", "Reporting"]
+      },
+      "branding": {
+        "title": "Branding",
+        "subtitle": "Identity that's remembered",
+        "description": "Visual identity that builds trust and recognition.",
+        "longDescription": "A brand is more than a logo — it's the entire experience users have with your company. We create coherent visual identities that communicate your values and leave a lasting impression.",
+        "capabilities": {
+          "visual": {
+            "title": "Visual identity",
+            "items": ["Logo design", "Color palette", "Typography", "Iconography"]
+          },
+          "materials": {
+            "title": "Brand materials",
+            "items": ["Business cards", "Presentations", "Social media assets", "Print materials"]
+          },
+          "strategy": {
+            "title": "Strategy",
+            "items": ["Brand positioning", "Tone of voice", "Brand guidelines", "Competitor analysis"]
+          }
+        },
+        "process": ["Discovery", "Concepts", "Design", "Refinement", "Delivery"]
+      }
+    },
+    "ourProcess": {
+      "title": "Our",
+      "titleHighlight": "process",
+      "description": "Transparent and efficient approach to every project",
+      "steps": {
+        "step1": {
+          "title": "Conversation",
+          "description": "We listen to your vision and define project goals."
+        },
+        "step2": {
+          "title": "Strategy",
+          "description": "We create a detailed plan and choose the right technologies."
+        },
+        "step3": {
+          "title": "Creation",
+          "description": "We design and develop with constant communication."
+        },
+        "step4": {
+          "title": "Launch",
+          "description": "We test, optimize, and push to production."
+        },
+        "step5": {
+          "title": "Support",
+          "description": "We stay with you even after project completion."
+        }
+      }
+    },
+    "whyUs": {
+      "title": "Why",
+      "titleHighlight": "us?",
+      "items": {
+        "understand": {
+          "title": "We understand you",
+          "description": "We understand your needs and market needs and create what you need."
+        },
+        "excellence": {
+          "title": "Technical excellence",
+          "description": "Practical experience in large projects guarantees quality and performance."
+        },
+        "transparency": {
+          "title": "Transparency",
+          "description": "You know exactly what's happening at every moment. No surprises."
+        },
+        "dedication": {
+          "title": "Dedication",
+          "description": "Your success is our success. We work until you're completely satisfied."
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to start?",
+      "description": "Let's talk about your project. Free consultation, no obligations.",
+      "button": "Schedule a call"
+    }
+  },
+  "projectsPage": {
+    "badge": "Portfolio",
+    "title": "Our",
+    "titleHighlight": "projects",
+    "description": "Explore our collection of projects. Each represents a unique story of collaboration, creativity, and technical excellence.",
+    "stats": {
+      "projects": "Projects",
+      "clients": "Clients",
+      "satisfaction": "Satisfaction"
+    },
+    "noProjects": "No projects in this category.",
+    "cta": {
+      "title": "Have a project in mind?",
+      "description": "Let's talk about your idea and turn it into reality.",
+      "button": "Contact us"
+    }
+  },
+  "projectDetail": {
+    "aboutProject": "About the project",
+    "client": "Client",
+    "year": "Year",
+    "technologies": "Technologies",
+    "allProjects": "All projects",
+    "prevProject": "Previous project",
+    "nextProject": "Next project",
+    "notFound": {
+      "title": "Project not found",
+      "description": "The project you're looking for doesn't exist or has been removed.",
+      "backButton": "← Back to projects"
+    }
+  }
+}
+

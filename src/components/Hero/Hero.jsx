@@ -3,8 +3,10 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import FloatingShapes from './FloatingShapes'
 import AnimatedLogo from './AnimatedLogo'
 import MagneticButton from '../ui/MagneticButton'
+import { useLanguage } from '../../context/LanguageContext'
 
 function Hero() {
+  const { t } = useLanguage()
   const containerRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -57,11 +59,10 @@ function Hero() {
           className="mt-8 mb-12"
         >
           <h2 className="font-display text-xl md:text-2xl lg:text-3xl text-navy/80 font-medium">
-            Digitalna rešenja bez granica
+            {t('hero.tagline')}
           </h2>
           <p className="mt-4 text-navy/60 font-body text-lg max-w-2xl mx-auto">
-            Transformišemo vaše ideje u digitalne proizvode koji inspirišu, 
-            angažuju i donose rezultate.
+            {t('hero.description')}
           </p>
         </motion.div>
 
@@ -77,7 +78,7 @@ function Hero() {
             className="px-8 py-4 bg-navy text-cream font-display font-semibold rounded-full hover:bg-orange transition-all duration-300 shadow-lg hover:shadow-xl"
             data-cursor="Start"
           >
-            Započni projekat
+            {t('hero.cta')}
           </MagneticButton>
 
           <MagneticButton
@@ -85,7 +86,7 @@ function Hero() {
             className="px-8 py-4 border-2 border-navy text-navy font-display font-semibold rounded-full hover:bg-navy hover:text-cream transition-all duration-300"
             data-cursor="View"
           >
-            Naše usluge
+            {t('hero.ourServices')}
           </MagneticButton>
         </motion.div>
       </motion.div>
@@ -103,7 +104,7 @@ function Hero() {
           className="flex flex-col items-center gap-2"
         >
           <span className="text-navy/50 text-xs font-body uppercase tracking-widest">
-            Skroluj
+            {t('hero.scroll')}
           </span>
           <div className="w-6 h-10 border-2 border-navy/30 rounded-full flex items-start justify-center p-1">
             <motion.div
