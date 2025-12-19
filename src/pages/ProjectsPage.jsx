@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { projects, categories, getProjectsByCategory } from '../data/projects'
 
 const pageVariants = {
@@ -119,6 +119,7 @@ function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState('Sve')
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const navigate = useNavigate()
 
   const filteredProjects = getProjectsByCategory(activeFilter)
 
@@ -129,6 +130,16 @@ function ProjectsPage() {
       window.lenis.scrollTo(0, { immediate: true })
     }
   }, [])
+
+  const handleContactClick = () => {
+    navigate('/')
+    setTimeout(() => {
+      const element = document.querySelector('#contact')
+      if (element && window.lenis) {
+        window.lenis.scrollTo(element, { offset: -100 })
+      }
+    }, 100)
+  }
 
   return (
     <motion.div
@@ -302,13 +313,13 @@ function ProjectsPage() {
             <p className="text-cream/60 font-body text-lg mb-8">
               Hajde da razgovaramo o vašoj ideji i pretvorimo je u stvarnost.
             </p>
-            <Link
-              to="/#contact"
+            <button
+              onClick={handleContactClick}
               className="inline-block px-8 py-4 bg-orange text-cream font-display font-semibold rounded-full hover:bg-cream hover:text-navy transition-all duration-300"
               data-cursor="Go"
             >
               Kontaktirajte nas
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>

@@ -1,14 +1,46 @@
 import { motion } from 'framer-motion'
+import { useNavigate, useLocation } from 'react-router-dom'
 import MagneticButton from './ui/MagneticButton'
 
 const socialLinks = [
-  { name: 'LinkedIn', href: '#' },
-  { name: 'Instagram', href: '#' },
-  { name: 'GitHub', href: '#' },
+  { name: 'LinkedIn', href: 'https://linkedin.com' },
+  { name: 'Instagram', href: 'https://instagram.com' },
+  { name: 'GitHub', href: 'https://github.com' },
+]
+
+const quickLinks = [
+  { name: 'Usluge', href: '/usluge', type: 'route' },
+  { name: 'Portfolio', href: '/projekti', type: 'route' },
+  { name: 'O nama', href: '/o-nama', type: 'route' },
+  { name: 'Kontakt', href: '#contact', type: 'scroll' },
 ]
 
 function Footer() {
   const currentYear = new Date().getFullYear()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleLinkClick = (link) => {
+    if (link.type === 'route') {
+      navigate(link.href)
+    } else {
+      // Scroll to contact section
+      if (location.pathname !== '/') {
+        navigate('/')
+        setTimeout(() => {
+          const element = document.querySelector(link.href)
+          if (element && window.lenis) {
+            window.lenis.scrollTo(element, { offset: -100 })
+          }
+        }, 100)
+      } else {
+        const element = document.querySelector(link.href)
+        if (element && window.lenis) {
+          window.lenis.scrollTo(element, { offset: -100 })
+        }
+      }
+    }
+  }
 
   return (
     <footer className="bg-navy text-cream py-16 relative overflow-hidden">
@@ -50,15 +82,15 @@ function Footer() {
           <div className="space-y-4">
             <h4 className="font-display font-semibold text-lg">Brzi linkovi</h4>
             <nav className="flex flex-col gap-2">
-              {['Usluge', 'Portfolio', 'O nama', 'Kontakt'].map((link) => (
-                <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  className="text-cream/70 hover:text-orange transition-colors font-body text-sm w-fit"
+              {quickLinks.map((link) => (
+                <motion.button
+                  key={link.name}
+                  onClick={() => handleLinkClick(link)}
+                  className="text-cream/70 hover:text-orange transition-colors font-body text-sm w-fit text-left"
                   whileHover={{ x: 5 }}
                 >
-                  {link}
-                </motion.a>
+                  {link.name}
+                </motion.button>
               ))}
             </nav>
           </div>

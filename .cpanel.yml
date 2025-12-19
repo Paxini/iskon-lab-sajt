@@ -4,3 +4,4 @@ deployment:
     - export DEPLOYPATH=/home/USERNAME/public_html
     - /bin/cp -R dist/* $DEPLOYPATH
 
+

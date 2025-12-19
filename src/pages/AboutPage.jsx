@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -36,6 +36,7 @@ function AboutPage() {
   const heroRef = useRef(null)
   const storyRef = useRef(null)
   const valuesRef = useRef(null)
+  const navigate = useNavigate()
   
   const isStoryInView = useInView(storyRef, { once: true, margin: '-100px' })
   const isValuesInView = useInView(valuesRef, { once: true, margin: '-100px' })
@@ -54,6 +55,16 @@ function AboutPage() {
       window.lenis.scrollTo(0, { immediate: true })
     }
   }, [])
+
+  const handleContactClick = () => {
+    navigate('/')
+    setTimeout(() => {
+      const element = document.querySelector('#contact')
+      if (element && window.lenis) {
+        window.lenis.scrollTo(element, { offset: -100 })
+      }
+    }, 100)
+  }
 
   return (
     <motion.div
@@ -401,13 +412,13 @@ function AboutPage() {
             <p className="text-cream/60 font-body text-lg mb-8">
               Vaša ideja zaslužuje tim koji će je razumeti i realizovati.
             </p>
-            <Link
-              to="/#contact"
+            <button
+              onClick={handleContactClick}
               className="inline-block px-8 py-4 bg-orange text-cream font-display font-semibold rounded-full hover:bg-cream hover:text-navy transition-all duration-300"
               data-cursor="Go"
             >
               Kontaktirajte nas
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>

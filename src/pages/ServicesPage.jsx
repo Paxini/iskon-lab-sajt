@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import MagneticButton from '../components/ui/MagneticButton'
 
 const pageVariants = {
@@ -268,6 +268,17 @@ function ServicesPage() {
   const accordionRef = useRef(null)
   const isProcessInView = useInView(processRef, { once: true, margin: '-100px' })
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleContactClick = () => {
+    navigate('/')
+    setTimeout(() => {
+      const element = document.querySelector('#contact')
+      if (element && window.lenis) {
+        window.lenis.scrollTo(element, { offset: -100 })
+      }
+    }, 100)
+  }
 
   useEffect(() => {
     // Check if there's a hash in the URL (e.g., #web-development)
@@ -533,13 +544,13 @@ function ServicesPage() {
             <p className="text-cream/60 font-body text-lg mb-8">
               Razgovarajmo o vašem projektu. Besplatna konsultacija, bez obaveza.
             </p>
-            <Link
-              to="/#contact"
+            <button
+              onClick={handleContactClick}
               className="inline-block px-8 py-4 bg-orange text-cream font-display font-semibold rounded-full hover:bg-cream hover:text-navy transition-all duration-300"
               data-cursor="Go"
             >
               Zakažite poziv
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>
